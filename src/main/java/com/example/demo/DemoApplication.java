@@ -14,44 +14,44 @@ import org.springframework.shell.standard.ShellMethod;
 @SpringBootApplication
 public class DemoApplication {
   @Autowired
-  BookRepository bookRepository;
+  GameRecordRepository gameRepository;
 
   public static void main(String[] args) {
      SpringApplication.run(DemoApplication.class, args);
   }
 
-  @ShellMethod("Saves a book to Cloud Datastore: save-book <title> <author> <year>")
-  public String saveBook(String title, String author, int year) {
-     Book savedBook = this.bookRepository.save(new Book(title, author, year));
-     return savedBook.toString();
+  @ShellMethod("Saves a game record to Cloud Datastore: save-game <name> <score>")
+  public String saveGame(String playerId, String name, double score) {
+     GameRecord savedGame = this.gameRepository.save(new GameRecord(playerId, name, score));
+     return savedGame.toString();
   }
 
-  @ShellMethod("Loads all books")
-  public String findAllBooks() {
-     Iterable<Book> books = this.bookRepository.findAll();
-     return Lists.newArrayList(books).toString();
+  @ShellMethod("Loads all game records")
+  public String findAllRecords() {
+     Iterable<GameRecord> games = this.gameRepository.findAll();
+     return Lists.newArrayList(games).toString();
   }
 
-  @ShellMethod("Loads books by author: find-by-author <author>")
-  public String findByAuthor(String author) {
-     List<Book> books = this.bookRepository.findByAuthor(author);
+  @ShellMethod("Loads records by player name: find-by-name <name>")
+  public String findByName(String name) {
+     List<GameRecord> books = this.gameRepository.findByName(name);
      return books.toString();
   }
 
-  @ShellMethod("Loads books published after a given year: find-by-year-after <year>")
-  public String findByYearAfter(int year) {
-     List<Book> books = this.bookRepository.findByYearGreaterThan(year);
-     return books.toString();
+  @ShellMethod("Loads records by player id: find-by-player-id <playerId>")
+  public String findByPlayerId(String playerId) {
+    List<GameRecord> books = this.gameRepository.findByPlayerId(playerId);
+    return books.toString();
   }
 
-  @ShellMethod("Loads books by author and year: find-by-author-year <author> <year>")
-  public String findByAuthorYear(String author, int year) {
-     List<Book> books = this.bookRepository.findByAuthorAndYear(author, year);
-     return books.toString();
+  @ShellMethod("Loads top 5 records by score")
+  public String findTop5Score() {
+    List<GameRecord> books = this.gameRepository.findTop5ByOrderByScoreDesc();
+    return books.toString();
   }
 
-  @ShellMethod("Removes all books")
-  public void removeAllBooks() {
-     this.bookRepository.deleteAll();
+  @ShellMethod("Removes all game records")
+  public void removeAllRecords() {
+     this.gameRepository.deleteAll();
   }
 }

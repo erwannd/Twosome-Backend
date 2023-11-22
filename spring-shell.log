@@ -6,3 +6,33 @@
 1695525483086:save-book
 1695525510129:save-book abc wolber 2023
 1695525519152:find-all-books
+1700090076785:help
+1700090084648:find-all-records
+1700090117106:save-game "BotPlayer" 100
+1700090129367:find-all-records
+1700090137621:find-by-name BotPlayer
+1700090301977:save-game "AdvancedBot" 300
+1700090349535:help
+1700090456231:save-game "OrderlyBot" 50
+1700090462423:find-all-records
+1700090493628:save-game "AdvancedBot" 500
+1700091783570:help
+1700091790604:find-top5score
+1700091821511:help
+1700091827263:find-top5score
+1700684660381:help
+1700684666261:find-all-records
+1700684674867:find-top5socre
+1700684680612:find-top5score
+1700684711469:save-game Player 600
+1700685086624:find-all-records
+1700685108136:save-game SillyBot 20
+1700685117822:save-game AFK 0
+1700685135354:save-game AwayFromKeyBoard 0
+1700685663768:help
+1700685687144:save-game pid09 SuperBot 10000
+1700685696614:find-all-records
+1700685756961:save-game pid01 UltimateBot 50000
+1700685787042:save-game pid02 AFK 0
+1700685801701:save-game pid03 AwayFromKey 0
+1700685821875:save-game pid05 Spooder 200
