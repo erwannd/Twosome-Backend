@@ -4,21 +4,20 @@ import org.springframework.data.annotation.Id;
 
 @Entity(name = "user_records")
 public class UserRecord {
-  @Id
-  String playerId;
+  String userId;
   String name;
 
-  public UserRecord(String playerId, String name) {
-    this.playerId = playerId;
+  public UserRecord(String userId, String name) {
+    this.userId = userId;
     this.name = name;
   }
 
-  public String getPlayerId() {
-    return playerId;
+  public String getUserId() {
+    return userId;
   }
 
-  public void setPlayerId(String playerId) {
-    this.playerId = playerId;
+  public void setUserId(String userId) {
+    this.userId = userId;
   }
 
   public String getName() {
@@ -31,9 +30,9 @@ public class UserRecord {
 
   @Override
   public String toString() {
-    return "<" +
-            "playerId='" + playerId + '\'' +
+    return "{" +
+            "userId='" + userId + '\'' +
             ", name='" + name + '\'' +
-            '>';
+            '}';
   }
 }

@@ -8,7 +8,6 @@ import org.springframework.data.annotation.Reference;
 public class GameRecord {
   @Id
   Long id;
-  @Reference
   UserRecord player;
   double score;
 

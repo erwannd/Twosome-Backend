@@ -25,3 +25,70 @@
 1700706803566:find-records-by-id x50
 1700706818219:find-records-by-name Jane
 1700707154550:find-records-by-id x50
+1700729745642:save-book June 199
+1700729755186:save-record June 1999
+1700729765282:save-game June 1999
+1700729835917:save-game x99 June 1999
+1700729846209:find-by-id x99
+1700729852506:help
+1700729865306:find-records-by-id x99
+1700729879777:find-records-by-name June
+1700729884178:remove-all-records
+1700730004288:save-game x11 Jane 100
+1700730020494:save-game x99 June 1999
+1700730030866:help
+1700730040376:find-records-by-id x99
+1700730048796:find-records-by-name Jane
+1700730136394:find-all-records
+1700730145697:save-game x11 Jane 100
+1700730166532:save-game x52 Jane 200
+1700730181412:find-records-by-name Jane
+1700730190850:find-records-by-id x52
+1700758248310:find-all-records
+1700758261345:save-game x50 Jane 500
+1700758286767:save-game x100 Aloha 600
+1700758294250:save-game x0 AFK 0
+1700758301161:help
+1700758310187:find-records-by-id x0
+1700758318200:find-records-by-name Jane
+1700758547520:save-game x0 AFK 1000
+1700760312599:find-all-records
+1700760319239:help
+1700760338387:find-records-by-id x0
+1700764483029:save-game x0 AFK 100
+1700764507685:save-game x0 AFK 0
+1700764515246:find-records-by-id x0
+1700764520790:find-records-by-name AFK
+1700766126801:help
+1700766146761:find-records-by-id x0
+1700766222397:find-records-by-name AFK
+1700766227895:find-records-by-id x0
+1700766348035:find-records-by-name AFK
+1700766350920:find-records-by-id x0
+1700766769600:find-records-by-name AFK
+1700766771937:find-records-by-id x0
+1700772684873:save-game x0 afk 50
+1700772694320:save-game x0 afk 60
+1700772719327:find-records-by-id x0
+1700772724947:find-records-by-name afk
+1700772891000:find-all-records
+1700772899350:save-game x0 afk 00
+1700772905477:save-game x0 afk 50
+1700772913046:save-game x5 Jane 100
+1700772921399:find-records-by-name afk
+1700772924777:find-records-by-name Jane
+1700772930227:find-records-by-id x0
+1700772935283:find-records-by-id x5
+1700773317247:find-records-by-id x0
+1700774064214:find-all-records
+1700774077560:save-game x0 afk 00
+1700774153588:save-game x0 afk 60
+1700774161357:save-game x0 afkay 70
+1700774170006:save-game x5 Jane 100
+1700774178914:save-game x5 Janette 99
+1700774194304:save-game x9 Jeniffer 200
+1700774198704:find-all-records
+1700774206258:find-records-by-id x5
+1700774215205:find-records-by-name Jane
+1700774229954:save-game x7 Jane 300
+1700774232902:find-records-by-name Jane

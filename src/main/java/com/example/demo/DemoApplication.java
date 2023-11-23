@@ -14,8 +14,6 @@ import org.springframework.shell.standard.ShellMethod;
 public class DemoApplication {
   @Autowired
   GameRecordRepository gameRepository;
-  @Autowired
-  UserRecordRepository userRepository;
 
   public static void main(String[] args) {
      SpringApplication.run(DemoApplication.class, args);
@@ -23,7 +21,7 @@ public class DemoApplication {
 
   @ShellMethod("Saves a game record to Cloud Datastore: save-game <name> <score>")
   public String saveGame(String id, String name, double score) {
-    UserRecord player = userRepository.findById(id).orElseGet(() -> userRepository.save(new UserRecord(id, name)));
+    UserRecord player = new UserRecord(id, name);
     GameRecord savedGame = this.gameRepository.save(new GameRecord(player, score));
     return savedGame.toString();
   }
@@ -35,8 +33,8 @@ public class DemoApplication {
   }
 
   @ShellMethod("Loads records for a specific playerId")
-  public String findRecordsById(String id) {
-    Iterable<GameRecord> games = this.gameRepository.findByPlayer_PlayerId(id);
+  public String findRecordsById(String userId) {
+    Iterable<GameRecord> games = this.gameRepository.findByPlayer_UserId(userId);
     return Lists.newArrayList(games).toString();
   }
 

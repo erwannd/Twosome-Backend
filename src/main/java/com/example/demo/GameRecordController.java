@@ -45,8 +45,8 @@ public class GameRecordController {
   @GetMapping("/findById")
   @ResponseBody
   @CrossOrigin(origins = "*")
-  public List<GameRecord> findById(@RequestParam String playerId) {
-    Iterable<GameRecord> records = this.gameRepository.findByPlayer_PlayerId(playerId);
+  public List<GameRecord> findById(@RequestParam String userId) {
+    Iterable<GameRecord> records = this.gameRepository.findByPlayer_UserId(userId);
     List<GameRecord> list = new ArrayList<>();
     records.forEach(list::add);
     return list;
