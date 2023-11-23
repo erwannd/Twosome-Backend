@@ -32,21 +32,21 @@ public class GameRecordController {
     return list;
   }
 
-  @GetMapping("/findByPlayerId")
+  @GetMapping("/findByName")
   @ResponseBody
   @CrossOrigin(origins = "*")
-  public List<GameRecord> findByPlayerId(@RequestParam String playerId) {
-    Iterable<GameRecord> records = this.gameRepository.findByPlayerId(playerId);
+  public List<GameRecord> findByName(@RequestParam String name) {
+    Iterable<GameRecord> records = this.gameRepository.findByPlayer_Name(name);
     List<GameRecord> list = new ArrayList<>();
     records.forEach(list::add);
     return list;
   }
 
-  @GetMapping("/findByName")
+  @GetMapping("/findById")
   @ResponseBody
   @CrossOrigin(origins = "*")
-  public List<GameRecord> findByName(@RequestParam String name) {
-    Iterable<GameRecord> records = this.gameRepository.findByName(name);
+  public List<GameRecord> findById(@RequestParam String playerId) {
+    Iterable<GameRecord> records = this.gameRepository.findByPlayer_PlayerId(playerId);
     List<GameRecord> list = new ArrayList<>();
     records.forEach(list::add);
     return list;

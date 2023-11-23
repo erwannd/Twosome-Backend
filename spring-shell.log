@@ -1,38 +1,27 @@
-1695524990148:findAllBooks
-1695525014466:find-all-books
-1695525076611:help
-1695525091392:stacktrace
-1695525464747:find-all-books
-1695525483086:save-book
-1695525510129:save-book abc wolber 2023
-1695525519152:find-all-books
-1700090076785:help
-1700090084648:find-all-records
-1700090117106:save-game "BotPlayer" 100
-1700090129367:find-all-records
-1700090137621:find-by-name BotPlayer
-1700090301977:save-game "AdvancedBot" 300
-1700090349535:help
-1700090456231:save-game "OrderlyBot" 50
-1700090462423:find-all-records
-1700090493628:save-game "AdvancedBot" 500
-1700091783570:help
-1700091790604:find-top5score
-1700091821511:help
-1700091827263:find-top5score
-1700684660381:help
-1700684666261:find-all-records
-1700684674867:find-top5socre
-1700684680612:find-top5score
-1700684711469:save-game Player 600
-1700685086624:find-all-records
-1700685108136:save-game SillyBot 20
-1700685117822:save-game AFK 0
-1700685135354:save-game AwayFromKeyBoard 0
-1700685663768:help
-1700685687144:save-game pid09 SuperBot 10000
-1700685696614:find-all-records
-1700685756961:save-game pid01 UltimateBot 50000
-1700685787042:save-game pid02 AFK 0
-1700685801701:save-game pid03 AwayFromKey 0
-1700685821875:save-game pid05 Spooder 200
+1700703217144:save-game x50 Janette 100
+1700703485446:find-records-by-id x50
+1700703504568:find-records-by-name Janette
+1700703519319:find-top5score
+1700703614562:find-records-by-id 'x50'
+1700703626455:find-records-by-name Jane
+1700703635897:save-game x52 Jane 200
+1700703640538:find-all-records
+1700703652541:find-records-by-name Jane
+1700703985708:find-all-records
+1700703989097:help
+1700703997384:find-records-by-id x50
+1700704014253:find-records-by-name 'Jane'
+1700704018016:find-records-by-name Jane
+1700704026924:find-records-by-id x52
+1700704370936:help
+1700704384072:find-records-by-id x501700706489365:save-record x50 Jane 200
+1700706494434:help
+1700706500282:save-game x50 Jane 200
+1700706508429:save-game x51 Janey 400
+1700706516456:find-records-by-id x50
+1700706524276:find-records-by-name Jane
+1700706789157:find-all-records
+1700706796812:help
+1700706803566:find-records-by-id x50
+1700706818219:find-records-by-name Jane
+1700707154550:find-records-by-id x50

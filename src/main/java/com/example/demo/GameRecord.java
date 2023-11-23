@@ -2,33 +2,22 @@ package com.example.demo;
 
 import com.google.cloud.spring.data.datastore.core.mapping.Entity;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Reference;
 
 @Entity(name = "game_records")
 public class GameRecord {
   @Id
   Long id;
-
-  String playerId;
-
-  String name;
-
+  @Reference
+  UserRecord player;
   double score;
 
-  public GameRecord(String playerId, String name, double score) {
-    this.playerId = playerId;
-    this.name = name;
+  public GameRecord(UserRecord player, double score) {
+    this.player = player;
     this.score = score;
   }
 
-  public String getPlayerId() {
-    return playerId;
-  }
-
-  public void setPlayerId(String playerId) {
-    this.playerId = playerId;
-  }
-
-  public long getId() {
+  public Long getId() {
     return this.id;
   }
   
@@ -36,12 +25,12 @@ public class GameRecord {
   	this.id=id;
   }
 
-  public String getPlayerName() {
-  	return this.name;
+  public UserRecord getPlayer() {
+    return this.player;
   }
-  
-  public void setPlayerName(String name) {
-  	this.name=name;
+
+  public void setPlayer(UserRecord player) {
+    this.player = player;
   }
   
   public double getScore() {
@@ -55,9 +44,7 @@ public class GameRecord {
   @Override
   public String toString() {
     return "{" +
-      "id:" + this.id +
-      ", Name:'" + this.name + '\'' +
-      ", playerId:'" + this.playerId + '\'' +
-      ", Score:" + this.score + '}';
+            "id:" + this.id + ", player:" + this.player +
+            ", Score:" + this.score + '}';
   }
 }
