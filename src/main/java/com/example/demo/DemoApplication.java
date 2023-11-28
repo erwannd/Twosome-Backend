@@ -62,6 +62,11 @@ public class DemoApplication {
     return books.toString();
   }
 
+  @ShellMethod("Delete game record based on record id")
+  public void deleteByRecordId(Long recordId) {
+    gameRepository.deleteById(recordId);
+  }
+
   @ShellMethod("Removes all game records")
   public void removeAllRecords() {
      this.gameRepository.deleteAll();

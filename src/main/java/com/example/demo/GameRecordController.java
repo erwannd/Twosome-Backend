@@ -73,4 +73,12 @@ public class GameRecordController {
     records.forEach(list::add);
     return list;
   }
+
+  @DeleteMapping("/deleteByRecordId")
+  @ResponseBody
+  @CrossOrigin(origins = "*")
+  public String deleteByRecordId(@RequestParam Long recordId) {
+    gameRepository.deleteById(recordId);
+    return "Record with id '" + recordId + "' deleted successfully.";
+  }
 }
