@@ -92,3 +92,56 @@
 1700774215205:find-records-by-name Jane
 1700774229954:save-game x7 Jane 300
 1700774232902:find-records-by-name Jane
+1701019627186:help
+1701019632494:find-all-records
+1701052070706:save-game x0 afk 0
+1701052100542:save-game ip2 pinocchio 10
+1701052120582:save-game x5 Jeremy 13
+1701052143643:save-game x0 Abby 23
+1701119062464:help
+1701119071369:save-game x0 afk 0
+1701123912360:find-all-records
+1701123962309:save-game x9 Pooh 12
+1701124627031:save-game 003 Poch 15
+1701124635699:save-game 007 Bond 20
+1701124639106:help
+1701124645660:find-records-by-id 007
+1701124654341:find-records-by-name Bond
+1701128829846:help
+1701128840240:find-all-records
+1701128848685:find-records-by-name
+1701128854461:find-records-by-name  Bond
+1701128934917:help
+1701128952272:find-by-player_user-id 007
+1701128961049:find-by-player_name Bond
+1701129345847:help
+1701129356227:find-by-player_user-id 007
+1701129497535:help
+1701129506148:find-by-player_user-id --7
+1701129511212:find-by-player_user-id 007
+1701129517618:find-by-player_name Bond
+1701129713162:find-by-player_user-id 007
+1701129719909:find-by-user-id 007
+1701129995917:help
+1701130077033:save-game k0 Abby 5
+1701130085012:save-game k0 Abigail 10
+1701130105185:save-game k10 Peter 13
+1701130120977:save-game k10 Potter 15
+1701130135990:save-game k5 Jennie 7
+1701130139651:help
+1701130143048:find-all-records
+1701130157272:find-by-name Peter
+1701130194536:find-by-user-id k0
+1701131013598:find-all-records
+1701131028229:help
+1701131045376:save-and-update-records k0 Nomadic 100
+1701131051608:find-all-records
+1701131106827:save-and-update-records k0 Nameless 17
+1701131201494:find-by-user-id k0
+1701131210407:find-by-id k0
+1701131241055:save-and-update-records k0 NotNamed 100
+1701131246553:find-by-id k0
+1701131413996:save-and-update-records k100 God 999
+1701131419461:find-all-records
+1701131836714:save-and-update-records k0 MisterX 18
+1701131840752:find-all-records

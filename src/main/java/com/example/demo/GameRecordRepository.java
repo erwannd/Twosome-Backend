@@ -7,8 +7,11 @@ import com.google.cloud.spring.data.datastore.repository.query.Query;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.repository.query.Param;
 
-public interface GameRecordRepository extends DatastoreRepository<GameRecord, Long> {
-  List<GameRecord> findByPlayer_Name(String name);
-  List<GameRecord> findByPlayer_UserId(String userId);
-  List<GameRecord> findTop5ByOrderByScoreDesc();
+  public interface GameRecordRepository extends DatastoreRepository<GameRecord, Long> {
+
+    List<GameRecord> findByPlayer_Name(String name);
+
+    List<GameRecord> findByPlayer_UserId(String userId);
+
+    List<GameRecord> findTop5ByOrderByScoreDesc();
 }

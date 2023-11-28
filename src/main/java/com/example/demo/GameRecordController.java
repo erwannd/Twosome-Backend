@@ -18,7 +18,19 @@ public class GameRecordController {
     if (record == null) {
       return "Invalid game record";
     }
-    this.gameRepository.save(record);
+
+    String userId = record.getPlayer().getUserId();
+    String newName = record.getPlayer().getName();
+
+    List<GameRecord> existingRecords = gameRepository.findByPlayer_UserId(userId);
+
+    if (!existingRecords.isEmpty()) {
+      for (GameRecord game : existingRecords) {
+        game.getPlayer().setName(newName);
+      }
+      gameRepository.saveAll(existingRecords);
+    }
+    gameRepository.save(record);
     return "success";
   }
 
