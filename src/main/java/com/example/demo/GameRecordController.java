@@ -2,6 +2,10 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -42,6 +46,14 @@ public class GameRecordController {
     List<GameRecord> list = new ArrayList<>();
     records.forEach(list::add);
     return list;
+  }
+
+  @GetMapping("/findRecordsByPage")
+  @ResponseBody
+  @CrossOrigin(origins = "*")
+  public Page<GameRecord> findAllRecords(int page, int size, String sortField, Sort.Direction sortDirection) {
+    Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, sortField));
+    return gameRepository.findAll(pageable);
   }
 
   @GetMapping("/findByName")

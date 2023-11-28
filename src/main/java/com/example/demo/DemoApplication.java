@@ -9,6 +9,9 @@ import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
@@ -41,6 +44,13 @@ public class DemoApplication {
   @ShellMethod("Loads all game records")
   public String findAllRecords() {
     Iterable<GameRecord> games = this.gameRepository.findAll();
+    return Lists.newArrayList(games).toString();
+  }
+
+  @ShellMethod("Pages all game records")
+  public String findRecordsByPage(String field) {
+    Pageable pageable = PageRequest.of(0,2, Sort.by(Sort.Direction.ASC, field));
+    Iterable<GameRecord> games = this.gameRepository.findAll(pageable);
     return Lists.newArrayList(games).toString();
   }
 
