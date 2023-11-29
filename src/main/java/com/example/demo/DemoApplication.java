@@ -20,24 +20,28 @@ import org.springframework.shell.standard.ShellMethod;
 public class DemoApplication {
   @Autowired
   GameRecordRepository gameRepository;
+  @Autowired
+  UserRecordRepository playerRepository;
 
   public static void main(String[] args) {
      SpringApplication.run(DemoApplication.class, args);
   }
 
   @ShellMethod("Saves and updates records: <id> <name> <score>")
-  public String saveAndUpdateRecords(String id, String name, double score) {
-    List<GameRecord> existingRecords = gameRepository.findByPlayer_UserId(id);
+  public String saveAndUpdateRecord(String id, String name, double score) {
+    List<UserRecord> existingRecords = playerRepository.findByUserId(id);
 
     if (!existingRecords.isEmpty()) {
-      for (GameRecord existingRecord : existingRecords) {
-        existingRecord.getPlayer().setName(name);
+      for (UserRecord existingRecord : existingRecords) {
+        existingRecord.setName(name);
       }
-      gameRepository.saveAll(existingRecords);
+      playerRepository.saveAll(existingRecords);
+    } else {
+      playerRepository.save(new UserRecord(id, name));
     }
-
-    UserRecord player = new UserRecord(id, name);
-    GameRecord savedGame = this.gameRepository.save(new GameRecord(player, score));
+    GameRecord record = new GameRecord(id, score);
+    record.prepareForSave();
+    GameRecord savedGame = this.gameRepository.save(record);
     return savedGame.toString();
   }
 
@@ -54,15 +58,15 @@ public class DemoApplication {
     return Lists.newArrayList(games).toString();
   }
 
-  @ShellMethod("Loads records for a player name <name>")
-  public String findByName(String name) {
-    Iterable<GameRecord> games = this.gameRepository.findByPlayer_Name(name);
+  @ShellMethod("Get all players")
+  public String findAllPlayers() {
+    Iterable<UserRecord> games = playerRepository.findAll();
     return Lists.newArrayList(games).toString();
   }
 
   @ShellMethod("Loads records for a particular google id <id>")
   public String findById(String userId) {
-    Iterable<GameRecord> games = this.gameRepository.findByPlayer_UserId(userId);
+    Iterable<GameRecord> games = this.gameRepository.findByGoogleId(userId);
     return Lists.newArrayList(games).toString();
   }
 

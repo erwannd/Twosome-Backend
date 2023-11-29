@@ -149,17 +149,3 @@
 1701137320829:find-all-records
 1701137345651:delete-by-record-id 5104575795167232
 1701137348603:find-all-records
-1701201238447:help
-1701201266884:save-and-update-records b15 Baby 9
-1701201287758:save-and-update-records b3b3 Bebe 10
-1701201307019:save-and-update-records j12 Julian 11
-1701201328202:save-and-update-records k15 Roman 3
-1701201352693:save-and-update-records a12 Abigail 14
-1701201363810:save-and-update-records a13 Ahmed 15
-1701201386640:save-and-update-records q12 Pennie 13
-1701201401144:save-and-update-records p0 Pooh 10
-1701201407233:find-all-records
-1701205884682:help
-1701205924932:find-all-records 1, 5, score, ascending
-1701206048448:find-all-records score descending
-1701206106756:find-all-records score

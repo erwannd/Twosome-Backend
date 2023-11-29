@@ -1,19 +1,26 @@
 package com.example.demo;
 
+import com.google.api.client.util.DateTime;
 import com.google.cloud.spring.data.datastore.core.mapping.Entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Reference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
 
 @Entity(name = "game_records")
 public class GameRecord {
   @Id
   Long id;
-  UserRecord player;
+  String googleId;
   double score;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MMMM d, yyyy 'at' HH:mm z", locale = "en_US")
+  Date playDate;
 
-  public GameRecord(UserRecord player, double score) {
-    this.player = player;
+  public GameRecord(String googleId, double score) {
+    this.googleId = googleId;
     this.score = score;
+    this.playDate = null;
   }
 
   public Long getId() {
@@ -24,14 +31,14 @@ public class GameRecord {
   	this.id=id;
   }
 
-  public UserRecord getPlayer() {
-    return this.player;
+  public String getGoogleId() {
+    return googleId;
   }
 
-  public void setPlayer(UserRecord player) {
-    this.player = player;
+  public void setGoogleId(String googleId) {
+    this.googleId = googleId;
   }
-  
+
   public double getScore() {
   	return this.score;
   }
@@ -40,10 +47,24 @@ public class GameRecord {
   	this.score=score;
   }
 
+  public Date getPlayDate() {
+    return playDate;
+  }
+
+  public void setPlayDate(Date playDate) {
+    this.playDate = playDate;
+  }
+
+  public void prepareForSave() {
+    if (playDate == null) {
+      playDate = new Date();
+    }
+  }
+
   @Override
   public String toString() {
     return "{" +
-            "id:" + this.id + ", player:" + this.player +
-            ", Score:" + this.score + '}';
+            "id:" + this.id + ", googleId:" + this.googleId +
+            ", Score:" + this.score + ", Date:" + this.playDate + '}';
   }
 }
