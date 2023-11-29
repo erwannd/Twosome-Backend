@@ -149,3 +149,41 @@
 1701137320829:find-all-records
 1701137345651:delete-by-record-id 5104575795167232
 1701137348603:find-all-records
+1701212080494:help
+1701212095786:save-and-update records x5 Janette 100
+1701212116024:save-and-update-records x5 Janette 100
+1701212138384:save-and-update-records x5 Jane 200
+1701212188708:save-and-update-records x10 Jennifer 300
+1701212203914:save-and-update-records x11 Loise 150
+1701212211191:find-by-id x11
+1701212214468:find-by-id x5
+1701213116465:save-game x11 Jeremy 11
+1701213127479:save-and-update-records x11 Jeremy 11
+1701213133049:save-and-update-records x11 Jeremiah 11
+1701219607312:save-game x15 Jennifer 100
+1701219615322:save-and-update-records x15 Jennifer 100
+1701219756860:find-all-records
+1701219901083:save-and-update-records p1 Please 10
+1701219917631:save-and-update-records p2 Pennie 13
+1701219926272:save-and-update-records p3 Pennifer 14
+1701219939607:save-and-update-records p4 Jennie 9
+1701219951364:find-all-records
+1701219965726:find-records-by-id p4
+1701219974925:help
+1701219980491:find-by-id x4
+1701219982290:find-by-id x3
+1701219985460:find-by-id p3
+1701219987783:find-by-id p4
+1701220040482:save-and-update-records p4 MisterP 15
+1701220865803:find-all-records
+1701221753459:y
+1701221763703:find-all-records
+1701223399378:save-game id5 PlayerM 200
+1701223407957:save-and-update-records id5 PlayerM 200
+1701223450901:find-all-records
+1701223456313:help
+1701223471666:find-by-id p3
+1701223474367:find-by-id p4
+1701225495378:save-and-update-record id2 Player2 100
+1701226762097:find-all-records
+1701226785095:save-and-update-record p45 Broke 0

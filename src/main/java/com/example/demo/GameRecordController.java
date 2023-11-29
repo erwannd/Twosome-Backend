@@ -7,29 +7,35 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class GameRecordController {
   private final GameRecordRepository gameRepository;
+  private final UserRecordRepository playerRepository;
 
-  public GameRecordController(GameRecordRepository gameRepository) {
+  public GameRecordController(GameRecordRepository gameRepository, UserRecordRepository playerRepository) {
     this.gameRepository = gameRepository;
+    this.playerRepository = playerRepository;
   }
 
   @PostMapping("/saveGame")
   @CrossOrigin(origins = "*")
-  public String saveGame(@RequestBody GameRecord record) {
-    if (record == null) {
+  public String saveGame(@RequestBody SaveGameRequest request) {
+    if (request == null) {
       return "Invalid game record";
     }
 
-    String userId = record.getPlayer().getUserId();
-    String newName = record.getPlayer().getName();
+    GameRecord record = request.getRecord();
+    String googleId = record.getGoogleId();
+    String newName = request.getNewName();
 
-    List<GameRecord> existingRecords = gameRepository.findByPlayer_UserId(userId);
+    List<UserRecord> existingPlayerRecord = playerRepository.findByUserId(googleId);
 
-    if (!existingRecords.isEmpty()) {
-      for (GameRecord game : existingRecords) {
-        game.getPlayer().setName(newName);
+    if (!existingPlayerRecord.isEmpty()) {
+      for (UserRecord rec : existingPlayerRecord) {
+        rec.setName(newName);
       }
-      gameRepository.saveAll(existingRecords);
+      playerRepository.saveAll(existingPlayerRecord);
+    } else {
+      playerRepository.save(new UserRecord(googleId, newName));
     }
+    record.prepareForSave();
     gameRepository.save(record);
     return "success";
   }
@@ -44,21 +50,11 @@ public class GameRecordController {
     return list;
   }
 
-  @GetMapping("/findByName")
-  @ResponseBody
-  @CrossOrigin(origins = "*")
-  public List<GameRecord> findByName(@RequestParam String name) {
-    Iterable<GameRecord> records = this.gameRepository.findByPlayer_Name(name);
-    List<GameRecord> list = new ArrayList<>();
-    records.forEach(list::add);
-    return list;
-  }
-
   @GetMapping("/findById")
   @ResponseBody
   @CrossOrigin(origins = "*")
   public List<GameRecord> findById(@RequestParam String userId) {
-    Iterable<GameRecord> records = this.gameRepository.findByPlayer_UserId(userId);
+    Iterable<GameRecord> records = this.gameRepository.findByGoogleId(userId);
     List<GameRecord> list = new ArrayList<>();
     records.forEach(list::add);
     return list;
