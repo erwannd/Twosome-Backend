@@ -187,3 +187,7 @@
 1701225495378:save-and-update-record id2 Player2 100
 1701226762097:find-all-records
 1701226785095:save-and-update-record p45 Broke 0
+1701233380139:help
+1701233384415:find-all-players
+1701234741531:help
+1701234745842:find-all-records

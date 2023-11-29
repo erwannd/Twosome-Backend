@@ -1,6 +1,7 @@
 package com.example.demo;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -16,14 +17,14 @@ public class GameRecordController {
 
   @PostMapping("/saveGame")
   @CrossOrigin(origins = "*")
-  public String saveGame(@RequestBody SaveGameRequest request) {
+  public String saveGame(@RequestBody CombinedRecord request) {
     if (request == null) {
       return "Invalid game record";
     }
 
     GameRecord record = request.getRecord();
     String googleId = record.getGoogleId();
-    String newName = request.getNewName();
+    String newName = request.getName();
 
     List<UserRecord> existingPlayerRecord = playerRepository.findByUserId(googleId);
 
@@ -50,6 +51,23 @@ public class GameRecordController {
     return list;
   }
 
+  @GetMapping("/findAllCombinedRecords")
+  @ResponseBody
+  @CrossOrigin(origins = "*")
+  public List<CombinedRecord> findAllCombinedRecords() {
+    Iterable<GameRecord> gameRecords = gameRepository.findAll();
+    Iterable<UserRecord> playerRecords = playerRepository.findAll();
+    List<CombinedRecord> list = new ArrayList<>();
+    for (GameRecord gameRecord : gameRecords) {
+      for (UserRecord playerRecord : playerRecords) {
+        if (Objects.equals(gameRecord.getGoogleId(), playerRecord.getUserId())) {
+          list.add(new CombinedRecord(gameRecord, playerRecord.getName()));
+        }
+      }
+    }
+    return list;
+  }
+
   @GetMapping("/findById")
   @ResponseBody
   @CrossOrigin(origins = "*")
@@ -57,6 +75,23 @@ public class GameRecordController {
     Iterable<GameRecord> records = this.gameRepository.findByGoogleId(userId);
     List<GameRecord> list = new ArrayList<>();
     records.forEach(list::add);
+    return list;
+  }
+
+  @GetMapping("/findCombinedRecordsById")
+  @ResponseBody
+  @CrossOrigin(origins = "*")
+  public List<CombinedRecord> findCombinedRecordsById(@RequestParam String userId) {
+    Iterable<GameRecord> gameRecords = gameRepository.findByGoogleId(userId);
+    Iterable<UserRecord> playerRecords = playerRepository.findAll();
+    List<CombinedRecord> list = new ArrayList<>();
+    for (GameRecord gameRecord : gameRecords) {
+      for (UserRecord playerRecord : playerRecords) {
+        if (Objects.equals(gameRecord.getGoogleId(), playerRecord.getUserId())) {
+          list.add(new CombinedRecord(gameRecord, playerRecord.getName()));
+        }
+      }
+    }
     return list;
   }
 
@@ -77,4 +112,35 @@ public class GameRecordController {
     gameRepository.deleteById(recordId);
     return "Record with id '" + recordId + "' deleted successfully.";
   }
+
+  /*ChatGPT recommendation for combining user and gameRecords
+  @GetMapping("/findAllCombinedRecords")
+  @ResponseBody
+  @CrossOrigin(origins = "*")
+  public List<CombinedRecord> findAllCombinedRecords() {
+    Iterable<GameRecord> gameRecords = gameRepository.findAll();
+    Iterable<UserRecord> playerRecords = playerRepository.findAll();
+
+    // Convert Iterable to List for efficient streaming
+    List<GameRecord> gameRecordList = StreamSupport.stream(gameRecords.spliterator(), false)
+            .collect(Collectors.toList());
+
+    List<UserRecord> playerRecordList = StreamSupport.stream(playerRecords.spliterator(), false)
+            .collect(Collectors.toList());
+
+    List<CombinedRecord> combinedRecords = gameRecordList.stream()
+            .filter(gameRecord -> playerRecordList.stream()
+                    .anyMatch(playerRecord -> Objects.equals(gameRecord.getGoogleId(), playerRecord.getUserId())))
+            .map(gameRecord -> {
+              UserRecord matchingPlayerRecord = playerRecordList.stream()
+                      .filter(playerRecord -> Objects.equals(gameRecord.getGoogleId(), playerRecord.getUserId()))
+                      .findFirst()
+                      .orElse(null);
+
+              return new CombinedRecord(gameRecord, (matchingPlayerRecord != null) ? matchingPlayerRecord.getName() : null);
+            })
+            .collect(Collectors.toList());
+
+    return combinedRecords;
+  }*/
 }

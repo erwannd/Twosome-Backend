@@ -21,4 +21,14 @@ public class UserRecordController {
     records.forEach(list::add);
     return list;
   }
+
+  @GetMapping("/findAllPlayers")
+  @ResponseBody
+  @CrossOrigin(origins = "*")
+  public List<UserRecord> findAllRecords() {
+    Iterable<UserRecord> records = playerRepository.findAll();
+    List<UserRecord> list = new ArrayList<>();
+    records.forEach(list::add);
+    return list;
+  }
 }

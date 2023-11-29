@@ -48,6 +48,12 @@ public class DemoApplication {
     return Lists.newArrayList(games).toString();
   }
 
+  @ShellMethod("Get all players")
+  public String findAllPlayers() {
+    Iterable<UserRecord> games = playerRepository.findAll();
+    return Lists.newArrayList(games).toString();
+  }
+
   @ShellMethod("Loads records for a particular google id <id>")
   public String findById(String userId) {
     Iterable<GameRecord> games = this.gameRepository.findByGoogleId(userId);
