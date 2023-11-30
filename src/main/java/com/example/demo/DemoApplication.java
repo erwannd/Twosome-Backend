@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -51,22 +52,29 @@ public class DemoApplication {
     return Lists.newArrayList(games).toString();
   }
 
-  @ShellMethod("Pages all game records")
-  public String findRecordsByPage(String field) {
-    Pageable pageable = PageRequest.of(0,2, Sort.by(Sort.Direction.ASC, field));
-    Iterable<GameRecord> games = this.gameRepository.findAll(pageable);
-    return Lists.newArrayList(games).toString();
-  }
-
-  @ShellMethod("Get all players")
-  public String findAllPlayers() {
-    Iterable<UserRecord> games = playerRepository.findAll();
-    return Lists.newArrayList(games).toString();
+  @ShellMethod("Find all records with pagination <page> <size>")
+  public String findAllRecordsByPage(int page, int size) {
+    Pageable pageable = PageRequest.of(page, size);
+    Page<GameRecord> games = this.gameRepository.findAll(pageable);
+    return games.toString();
   }
 
   @ShellMethod("Loads records for a particular google id <id>")
   public String findById(String userId) {
     Iterable<GameRecord> games = this.gameRepository.findByGoogleId(userId);
+    return Lists.newArrayList(games).toString();
+  }
+
+  @ShellMethod("Find records by googleId with pagination <id> <page> <size>")
+  public String findRecordsByIdByPage(String id, int page, int size) {
+    Pageable pageable = PageRequest.of(page, size);
+    Page<GameRecord> games = this.gameRepository.findByGoogleId(id, pageable);
+    return games.toString();
+  }
+
+  @ShellMethod("Get all players")
+  public String findAllPlayers() {
+    Iterable<UserRecord> games = playerRepository.findAll();
     return Lists.newArrayList(games).toString();
   }
 

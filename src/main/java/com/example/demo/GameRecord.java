@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.google.api.client.util.DateTime;
 import com.google.cloud.spring.data.datastore.core.mapping.Entity;
+import com.google.cloud.spring.data.datastore.core.mapping.Unindexed;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Reference;
 import com.fasterxml.jackson.annotation.JsonFormat;

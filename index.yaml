@@ -1,0 +1,25 @@
+#Composite indexes for datastore
+indexes:
+  - kind: game_records
+    properties:
+      - name: googleId
+      - name: score
+        direction: desc
+
+  - kind: game_records
+    properties:
+      - name: googleId
+      - name: score
+        direction: asc
+
+  - kind: game_records
+    properties:
+      - name: googleId
+      - name: playDate
+        direction: desc
+
+  - kind: game_records
+    properties:
+      - name: googleId
+      - name: playDate
+        direction: asc

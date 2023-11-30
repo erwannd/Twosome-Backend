@@ -72,11 +72,13 @@ public class GameRecordController {
     return list;
   }
 
-  @GetMapping("/findRecordsByPage")
+  @GetMapping("/findAllRecordsByPage")
   @ResponseBody
   @CrossOrigin(origins = "*")
-  public Page<GameRecord> findAllRecords(int page, int size, String sortField, Sort.Direction sortDirection) {
-    Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, sortField));
+  public Page<GameRecord> findAllRecordsByPage(@RequestParam int page, @RequestParam int size, @RequestParam(defaultValue = "score") String sortField, @RequestParam(defaultValue = "desc") String sortDirection) {
+    Sort.Direction direction = Sort.Direction.fromString(sortDirection);
+    Sort sort = Sort.by(direction, sortField);
+    Pageable pageable = PageRequest.of(page, size, sort);
     return gameRepository.findAll(pageable);
   }
 
@@ -88,6 +90,16 @@ public class GameRecordController {
     List<GameRecord> list = new ArrayList<>();
     records.forEach(list::add);
     return list;
+  }
+
+  @GetMapping("/findByIdByPage")
+  @ResponseBody
+  @CrossOrigin(origins = "*")
+  public Page<GameRecord> findByIdByPage(@RequestParam String userId, @RequestParam int page, @RequestParam int size,  @RequestParam(defaultValue = "score") String sortField, @RequestParam(defaultValue = "desc") String sortDirection) {
+    Sort.Direction direction = Sort.Direction.fromString(sortDirection);
+    Sort sort = Sort.by(direction, sortField);
+    Pageable pageable = PageRequest.of(page, size, sort);
+    return gameRepository.findByGoogleId(userId, pageable);
   }
 
   @GetMapping("/findCombinedRecordsById")

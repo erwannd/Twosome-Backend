@@ -149,3 +149,14 @@
 1701137320829:find-all-records
 1701137345651:delete-by-record-id 5104575795167232
 1701137348603:find-all-records
+1701238244453:help
+1701238258669:find-all-players
+1701238320820:help
+1701238346020:save-and-update-record p3p3 Maria 30
+1701238363731:find-records-by-page
+1701238368465:find-records-by-page score
+1701276720865:help
+1701276740716:find-all-records-by-page 0 5
+1701276809827:find-records-by-id-by-page p4 0 1
+1701276814188:find-records-by-id-by-page p4 0 2
+1701330599905:cls
