@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.List;
+import java.util.Random;
 
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.Query;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+import org.springframework.web.bind.annotation.*;
 
 @ShellComponent
 @SpringBootApplication
@@ -23,6 +25,9 @@ public class DemoApplication {
   GameRecordRepository gameRepository;
   @Autowired
   UserRecordRepository playerRepository;
+
+  @Autowired
+  PhraseRepository phraseRepository;
 
   public static void main(String[] args) {
      SpringApplication.run(DemoApplication.class, args);
@@ -93,4 +98,39 @@ public class DemoApplication {
   public void removeAllRecords() {
      this.gameRepository.deleteAll();
   }
+
+  @ShellMethod("Returns a random phrase from a category: <category>")
+  public String findByCategory(@RequestParam String category) {
+    // Retrieve all phrases for the specified category
+    List<Phrase> phrases = phraseRepository.findByCategory(category);
+    if (phrases.isEmpty()) {
+      return "No phrases found for the specified category";
+    }
+    // Select a random phrase from the list
+    Random random = new Random();
+    Phrase randomPhrase = phrases.get(random.nextInt(phrases.size()));
+
+    // Return the selected phrase
+    return randomPhrase.getPhrase();
+  }
+
+  @ShellMethod("Retrieves the hint for phrase: <phraseId>")
+  public String getHint(@RequestParam Long phraseId) {
+    // Retrieve the phrase from the datastore based on the provided phraseId
+    Phrase phrase = phraseRepository.findById(phraseId).orElse(null);
+    // Check if the phrase exists
+    if (phrase == null) {
+      return "Phrase not found for the given ID";
+    }
+    // Return the hint for the selected phrase
+    return phrase.getHint();
+  }
+
+  @ShellMethod
+  public String addPhrase(@RequestBody Phrase newPhrase) {
+    phraseRepository.save(newPhrase);
+    return "Phrase added successfully!";
+  }
+
+
 }
