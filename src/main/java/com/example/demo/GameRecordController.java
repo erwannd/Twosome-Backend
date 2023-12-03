@@ -124,35 +124,37 @@ public class GameRecordController {
   }
 
   /**
-   * UserRecord repository method to partially update
-   * user record fields.
+   * UserRecord repository method to update
+   * username field.
    */
-  @PatchMapping("/updateUserProfile/{userId}")
+  @PostMapping("/updateUserProfile")
   @CrossOrigin(origins = "*")
-  public ResponseEntity<UserRecord> updateUserProfile(
-          @PathVariable String userId,
-          @RequestBody UserRecord updatedUserRecord) {
+  public ResponseEntity<UserRecord> updateUserProfile(@RequestBody UserRecord updatedUserRecord) {
 
-    // Check if a user record with the given userId exists
-    if (!playerRepository.existsByUserId(userId)) {
-      return ResponseEntity.notFound().build();
+    String userId = updatedUserRecord.getUserId();
+    String newName = updatedUserRecord.getName();
+
+    // Ensure that userId is not null or empty
+    if (userId == null || userId.isEmpty()) {
+      return ResponseEntity.badRequest().build();
     }
 
-    // Retrieve the existing user record
-    UserRecord existingUserRecord = playerRepository.findByUserId(userId).get(0);
+    // Retrieve the existing user record, if it exists
+    List<UserRecord> existingUserRecords = playerRepository.findByUserId(userId);
 
-    if (existingUserRecord != null) {
-      // Update the name and profession fields
+    if (!existingUserRecords.isEmpty()) {
+      // Update the name of the first matching record
+      UserRecord existingUserRecord = existingUserRecords.get(0);
       if (updatedUserRecord.getName() != null) {
-        existingUserRecord.setName(updatedUserRecord.getName());
+        existingUserRecord.setName(newName);
+        playerRepository.save(existingUserRecord);
       }
-
-      // Save the updated user record
-      playerRepository.save(existingUserRecord);
-      return ResponseEntity.ok(existingUserRecord);
     } else {
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+      // If the user record doesn't exist, create a new one
+      UserRecord newUserRecord = new UserRecord(userId, newName);
+      playerRepository.save(newUserRecord);
     }
+    return ResponseEntity.ok(updatedUserRecord);
   }
 
 
