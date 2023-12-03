@@ -83,12 +83,6 @@ public class DemoApplication {
     return Lists.newArrayList(games).toString();
   }
 
-  @ShellMethod("Loads top 5 records by score")
-  public String findTop5Score() {
-    List<GameRecord> books = this.gameRepository.findTop5ByOrderByScoreDesc();
-    return books.toString();
-  }
-
   @ShellMethod("Delete game record based on record id")
   public void deleteByRecordId(Long recordId) {
     gameRepository.deleteById(recordId);

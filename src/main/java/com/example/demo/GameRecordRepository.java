@@ -14,5 +14,4 @@ import org.springframework.data.domain.Sort;
 public interface GameRecordRepository extends DatastoreRepository<GameRecord, Long> {
     List<GameRecord> findByGoogleId(String googleId);
     Page<GameRecord> findByGoogleId(@Param("googleId") String googleId, Pageable pageable);
-    List<GameRecord> findTop5ByOrderByScoreDesc();
 }

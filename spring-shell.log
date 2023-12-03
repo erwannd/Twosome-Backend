@@ -163,3 +163,12 @@
 1701488592825:help
 1701489436668:find-by-category
 1701489450364:find-by-category "slogan"
+1701630118132:help
+1701630362550:save-and-update-record dec3-00 Phillip 200
+1701630436227:save-and-update-record dec3-00 Peterson 150
+1701631468673:help
+1701632372250:save-game dec3-01 John 102
+1701632391722:help
+1701632405223:save-and-update-record dec3-01 John 102
+1701632413392:save-and-update-record dec3-02 Bobby 100
+1701632448050:save-and-update-record dec3-03 "Al Pacino" 105

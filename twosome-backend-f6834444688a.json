@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "twosome-backend",
+  "private_key_id": "f6834444688a759cbe943177222e37b9d35b5473",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDkWPbgXJpwHVwA\nrnjLDk09hHoNZNUGcnWQaWDKvvLS8+USZXurNi6P3xyeO5c1t4wo5PaX57Q7inH9\nPdUxj58p+FlpG+4mWQE8cNxPd+9mULyLOBv/U4bI2YoUPMY3ZomkCfhlne6SvCij\nY0SJCOUtsDk2Dblj/1xD8GsbfO78atbX2ziH3AEHiJNpnfk3JnffFwFpsc92U/fQ\nFHyQJyt/1EhLwKGIcjR8lmN/jKmX9wXRaBjwybAdEtVgy9HtIQDt13qthYrdUsQd\najSiwKfRbqd7chV/gUxp4A9ash71r2ClDr2+IZnl599EwKw6QLYKaRUmXEtDt1Vq\niWrUUJt7AgMBAAECggEAXUJwYaWwdYWoI6ceMmA+75cBeiLqVd29YiOHooZmCf4O\nWnsUDRLt5ViMCZvw38F8/t60T8oT9BVRBMqSHdG4gZ2qdqEvnH3RYWv+rn4fSjxD\nJODfnmHwtGsUV7uSgOHh6RshVe8wlsE+H6zVOtplL0m/s/Ha+5o5ho3UUL+vo2sB\noaNxowH6v9Xk6cFrjwj4tnpkt+ZOuY2BYwFZ+Am/HG076xjWIS5rI82nRKHYQkqJ\nI+ANCqBfoP+rjZeOflMJhfCeBRdfzcnua6tnvL3ZgUjSZvdfQ6Eer9AxztDpRbUx\nXu4Wa/gjLGFHYa1u/1L0HGLoyj7pr4zOx3kiJ9NcsQKBgQDx9bTNz35696YnGlKq\nMQER1Vrz6kwxTBt/z/PUeOO9BzqPa1GQwCG70nHboSq+ru5h2+g0P5/dCyHbpsy5\nolilSWcuZhxAOsO2wRqHJA6kIhXX9+ALxbLmPXBF32GQCsL0XeLq1sffDAiFBtQb\n28WRtv66h+Ffsln1xF1sfZRBdwKBgQDxmQyBHZkrX9sIQCj/jxCIEsWbDCy5FJVx\n0SjQtQBzZ5d7FnI6rJxVN4jofDjlpgmLgi4b8tGekVOKZ4Cw+pl0rCpTTU8J0NCM\nCPMoW4CfIieOnLUxxZX8RJZ89QE/6PfLU9vVaLZ+Tbsf/FfLEWSEm2zn7mI+qJ7e\nB7DnUViXHQKBgFh/+aDpyyZpHKHi0+eiQvTl5/2dbj79ynUmd9X4XbxPP5EjvNLI\nI86SO8kMmxjh3Rl4GOe7edqc7sZrrSgdBHV4csAa4yxvEhTvbqeNfbl1Ki4zYQSN\nTFFAmadE/Gd2ODavfIdPBg5EVX1qsPx7lzkkCOnrN3kMQDFPoKhFCowjAoGACqOY\nv17UTeqstJJOu+JK8hMRjKBen8/ePOLfD0HJQUvAifUVFqxfPglyB/rgbox/Qxt6\neFSbEoaHzUJ9kk2W0GJ8gqqW3nHJnUEPpClTYq6YW1lfSU/QKQnELsCDS5Mwxk1t\nEtrHnoxBv0jXfOPJL2XAx/3haaz3QgPIsIcOhakCgYBsVn7XZQ5OCOumYni9o4G+\ncZUzPUHykj7C/6ge9ixCQriNrNTKkxcu/YXrvGBiZM/fDZ19rslMdJ1NVrHJeP0H\n4v6zT6tQdziqxR48BfDPbIjSyC9gmNCPVRVsPedldSahnkWrnAcByA487Xba/Tsw\nT4rDV4GcF021KWg2BX5qcQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "file-upload@twosome-backend.iam.gserviceaccount.com",
+  "client_id": "104079051372767670669",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/file-upload%40twosome-backend.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

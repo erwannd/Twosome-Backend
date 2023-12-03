@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface UserRecordRepository extends DatastoreRepository<UserRecord, String> {
   List<UserRecord> findByUserId(String userId);
+  boolean existsByUserId(String userId);
 }
