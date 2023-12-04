@@ -16,21 +16,28 @@ public class PhraseController {
         this.phraseRepository = phraseRepository;
     }
 
-    @GetMapping("/findByCategory")
+    @GetMapping("/getRandomPhraseByCategory")
     @ResponseBody
     @CrossOrigin(origins = "*")
-    public String findByCategory(@RequestParam String category) {
+    public Phrase getRandomPhraseByCategory(@RequestParam String category) {
         // Retrieve all phrases for the specified category
         List<Phrase> phrases = phraseRepository.findByCategory(category);
-        if (phrases.isEmpty()) {
-            return "No phrases found for the specified category";
-        }
         // Select a random phrase from the list
         Random random = new Random();
         Phrase randomPhrase = phrases.get(random.nextInt(phrases.size()));
 
         // Return the selected phrase
-        return randomPhrase.getPhrase();
+        return randomPhrase;
+    }
+
+    @GetMapping("/findAllPhrases")
+    @ResponseBody
+    @CrossOrigin(origins = "*")
+    public List<Phrase> findAllPhrases() {
+        Iterable<Phrase> records = phraseRepository.findAll();
+        List<Phrase> list = new ArrayList<>();
+        records.forEach(list::add);
+        return list;
     }
 
     @PostMapping("/addPhrase")
